@@ -1,0 +1,52 @@
+{
+  "name": "Time Blocking Calendar",
+  "description": "Syncs with your Google Calendar to improve your productivity using the Time Blocking time management technique.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0LdpptUAWNKM5JXQKhSEcQfq8CBf6Q/augtEud6ORwYE0OPD0bUWgEw6KGjuP6gjaX263R65z9qLEiimyvUEt+/wvfshMwzhB3QoFi/U34bkH8jPVneWRLsxlQtEweAlGf8MGluGrU7U58Ks9ly3hNlaql5f4Ab7ainzXrNMU+brdkEV+KjMuX2Rj4LIBZSJSOc6182Rn6LesGBxlB498D0LX91zYG5VsbquaieXe0SWZWEbluCiy4xWEBXH0peCo4nQ4qj1a0jLZYJyxfrmirpxUxJEM7GpUM3HoQdSBLB+QfaUG39vPiwcUMhFwt8YaWBhRt2EYzgnSy0RMvP02QIDAQAB",
+  "oauth2": {
+    "client_id": "546569437349-5025l84ori8se7m9kl37hvdo3vbqiulm.apps.googleusercontent.com",
+    "scopes": [
+      "openid", 
+      "email", 
+      "profile",
+      "https://www.googleapis.com/auth/calendar"
+    ]
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "identity",
+    "identity.email"
+  ],
+  "host_permissions": ["https://www.googleapis.com/*"],
+  "icons": {
+    "16": "/images/get_started16.png",
+    "32": "/images/get_started32.png",
+    "48": "/images/get_started48.png",
+    "128": "/images/get_started128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/get_started16.png",
+      "32": "/images/get_started32.png",
+      "48": "/images/get_started48.png",
+      "128": "/images/get_started128.png"
+    }
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens popup.html"
+    }
+  }
+  }

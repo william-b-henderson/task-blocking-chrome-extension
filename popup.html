@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="oauth.js"></script>
+  </head>
+  <body>
+    <div class="header-bar">
+      <h2>Time Blocking</h2>
+      <button class="icon-button" id="refresh-data" aria-label="Refresh Data">
+        <i id="refresh-data" class="fa fa-refresh fa-2x" role="button"></i>
+      </button>
+      <a id="options-icon" target="_blank" href="options.html">
+        <i class="fa fa-gear fa-2x"></i>
+      </a>
+    </div>
+    <button id="oauth">Sign in to Google</button>
+    <button id="signout">Sign out</button>
+    <a id="open-calendar" target="_blank" href="https://calendar.google.com/">Open calendar</a>
+    <!-- <button id="refresh-data">Refresh data</button> -->
+    <div id="calendar-div">
+      <div id="current-time"></div>
+      <div id="calendar-timeline">
+        <div class="timeline-hour">7am</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">8am</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">9am</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">10am</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">11am</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">12pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">1pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">2pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">3pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">4pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">5pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">6pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">7pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">8pm</div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hatch"></div>
+        <div class="timeline-hour">9pm</div>
+      </div>
+      <ul id="event-list"></ul>
+    </div>
+    <script src="popup.js"></script>
+ 
+  </body>
+</html>

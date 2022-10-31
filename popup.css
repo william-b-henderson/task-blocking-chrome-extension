@@ -1,0 +1,175 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  width: 20rem;
+  height: 100rem;
+}
+
+button {
+    height: 30px;
+    width: 30px;
+    outline: none;
+    margin: 10px;
+    border: none;
+    border-radius: 2px;
+    
+  }
+
+  button:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+  }
+  
+  button.current {
+    box-shadow: 0 0 0 2px white,
+                0 0 0 4px black;
+  }
+
+  button#oauth {
+    background-color: rgb(241, 241, 241);
+    width: 10rem;
+    white-space: nowrap;
+  }
+
+  button#oauth:hover {
+    background-color: rgb(221, 221, 221);
+  }
+
+  button#refresh-data {
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+  }
+
+.header-bar {
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 0 2px black;
+}
+
+#event-list {
+  list-style-type: none;
+  position: relative;
+  margin: 0;
+  width: 93%;
+  margin-right: auto;
+  margin-left: 0px;
+  padding: 0;
+  background-color: #cbdcf8;
+}
+
+#event-list li:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.empty-event-item {
+  background-color: #d63939;
+  height: 20px;
+}
+
+.event-item {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid white;
+  margin-left: 0px;
+  font-size: 0.75rem;
+  background-color: #ccf0f0;
+}
+
+#event-grab-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.event-item::before:hover {
+  cursor: grab;
+}
+
+
+.event-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 700;
+  padding-left: 5px;
+  height: 20px;
+  padding-bottom: 0;
+}
+
+.event-start-time {
+  width: 50%;
+  padding-left: 5px;
+  height: 20px;
+  padding-top: 0;
+}
+
+#options-icon {
+  color: inherit;
+  height: 25px;
+  width: 25px;
+}
+
+li {
+  width: 100%;
+}
+
+#calendar-div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+#calendar-timeline {
+  background-color: dodgerblue;
+  width: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.timeline-hour, .timeline-hatch {
+  height: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-hour::before, .timeline-hatch::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 1px;
+  border-bottom: 1px solid black;
+}
+
+#current-time {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background-color: red;
+  z-index: 20;
+}
