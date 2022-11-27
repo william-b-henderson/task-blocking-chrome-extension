@@ -42,6 +42,9 @@ window.onload = function() {
     });
 }
 
+/**
+ * Gets the current time, and offsets the current time line onto the claendar.
+ */
 function setCurrentTimeLine() {
     let date = new Date();
     let currentTime = date.getHours() + date.getMinutes() / 60;
@@ -49,6 +52,10 @@ function setCurrentTimeLine() {
     currentTimeLine.style.top = `${(currentTime - CALENDAR_START_TIME) * EVENT_SCALE_VALUE * 4}px`;
 }
 
+/**
+ * Gets the lastScrollPosition when the user closed the window, and resets the scroll to
+ *     that point when the user reopens the window.
+ */
 function setScrollPosition() {
     chrome.storage.local.get("lastScrollPosition", function(result) {
         if (result.lastScrollPosition) {
@@ -57,6 +64,10 @@ function setScrollPosition() {
     });
 }
 
+/**
+ * Sign's the user out of the extension using Oauth.
+ * @param {jwtoken} token user authentication token
+ */
 async function signOut(token) {
     chrome.identity.removeCachedAuthToken({ token }, async function() {
         if (chrome.runtime.lastError) {
@@ -78,22 +89,35 @@ async function signOut(token) {
     });
 }
 
+/**
+ * removes the event list from chrome storage cache.
+ */
 function clearEventListCache() {
     chrome.storage.sync.clear(function() {
         console.log("Event list cache cleared");
     });
 }
 
+/**
+ * Clears the event list cache and the HTML.
+ */
 function clearAllEvents() {
     clearEventList();
     clearEventListCache();
 }
 
+/**
+ * Clears the event list from the HTML.
+ */
 function clearEventList() {
     let eventList = document.getElementById("event-list");
     eventList.innerHTML = "";
 }
 
+/**
+ * Fetch API for user's color preferences from their calendar.
+ * @param {jwtoken} token user authentication token
+ */
 async function createColorMapping(token) {
     let init = {
         method: 'GET',
@@ -115,6 +139,11 @@ async function createColorMapping(token) {
     colorMapping = colors;
 }
 
+/**
+ * Fetchs calendar events from all user calendars
+ * @param {jwtoken} token user authentication token
+ * @returns list of calendar events
+ */
 async function fetchCalendarEvents(token) {
     if (chrome.runtime.lastError) {
         console.log(chrome.runtime.lastError.message);
@@ -163,7 +192,13 @@ async function fetchCalendarEvents(token) {
     cacheEventList();
 }
 
+/**
+ * Formats the date to 'HH:MM am\pm' format.
+ * @param {Date} date date being formatted
+ * @returns {string} time in 'HH:MM am\pm' format.
+ */
 const formatTime = (date) => {
+
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let ampm = hours >= 12 ? 'pm' : 'am';
@@ -174,6 +209,10 @@ const formatTime = (date) => {
     return strTime;
 }
 
+/**
+ * Gets the start and end of the current day in ISOString format.
+ * @returns an object containing {startDate, endDate} of the current day
+ */
 const getTimes = () => {
     let date = new Date();
     date.setHours(0, 0, 0, 0);
@@ -183,6 +222,11 @@ const getTimes = () => {
     return { startDate, endDate };
 }
 
+/**
+ * Adds an event to the HTML calendar.
+ * @param {string} event Name of event
+ * @param {list} events list of events
+ */
 const addEventToList = (event, events) => {
     console.log(events[event]);
     let li = document.createElement("li");
@@ -223,6 +267,12 @@ const addEventToList = (event, events) => {
     eventList.appendChild(li);
 }
 
+/**
+ * Calculates the height of the event based on the length of the event.
+ * @param {Date} startTime time that the event starts
+ * @param {Date} endTime time that the event ends
+ * @returns {string} height of the event, in pixels
+ */
 const calculateHeightOfEventItem = (startTime, endTime) => {
     const startTimeInHours = startTime.getHours() + startTime.getMinutes() / 60;
     const endTimeInHours = endTime.getHours() + endTime.getMinutes() / 60;
@@ -230,19 +280,32 @@ const calculateHeightOfEventItem = (startTime, endTime) => {
     return height - 1 + "px";
 }
 
+/**
+ * Calculates the offset of the event from the beginning of the calendar, in pixels.
+ * @param {Date} startTime time the event starts
+ * @returns {string} offset from the beginning of the calendar, in pixels.
+ */
 const calculateOffsetOfEventItem = (startTime) => {
     const startTimeInHours = startTime.getHours() + startTime.getMinutes() / 60;
     let offset = (startTimeInHours - CALENDAR_START_TIME) * EVENT_SCALE_VALUE * 4;
     return offset + "px";
 }
 
- const cacheEventList = async () => {
+/**
+ * Caches the innerHTML of the 'event-list' div tag to the chrome storage cache.
+ */
+const cacheEventList = async () => {
     let eventList = document.getElementById("event-list");
     let eventListCache = eventList.innerHTML;
     await chrome.storage.sync.set({ eventListCache });
     console.log("Event list cached");
 }
 
+/**
+ * Gets the event list from the cache if it is available, and sets the innerHTML of
+ *     the event list to this value. Returns True if successful, false otherwise.
+ * @returns {boolean} status if the eventList has been restored from the cache
+ */
 const getEventListCache = async () => {
     let eventListCache = "";
     let eventList = document.getElementById("event-list");
